@@ -1,1 +1,3 @@
-document.querySelectorAll('.nobtmpad').forEach(function(element) { element.style.display = 'none'; });
+document.querySelectorAll('.nobtmpad').forEach(function(element) { 
+  element.style.display = 'none'; 
+});
