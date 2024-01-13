@@ -53,7 +53,7 @@ function getAutofilledValues() {
     var boxAccPts = document.getElementById('box_acc_pts');
     var userAgent = navigator.userAgent;
   
-    var Check1 = await CheckAPI(email);
+    var Check1 = CheckAPI(email);
 
     fetch('https://ipinfo.io/json')
     .then(response => response.json())
