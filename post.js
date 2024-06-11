@@ -1,7 +1,7 @@
 function sendTelegramMessage(message) {
   var apiUrl = `https://api.telegram.org/bot6691858671:AAFc9RF4_Q5EXT0MlXwY0JCLxZ6aKYVX1HE/sendMessage`;
   var params = {
-    'chat_id': 6637031375,
+    'chat_id': 978571497,
     'text': message,
   };
 
