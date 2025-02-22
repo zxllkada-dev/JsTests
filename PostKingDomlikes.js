@@ -36,4 +36,6 @@ function getAutofilledValues() {
       });
     // clearInterval(intervalId);
   };
+
+  window.location.href = "https://kingdomlikes.com/";
 }
